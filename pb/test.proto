@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package pb;
+
+//protoc --proto_path=./pb   --go_out=paths=source_relative:./pb  --go-grpc_out=paths=source_relative:./pb  test.proto
+option go_package = "grpcdemo.pb;pb";
+
+message HelloRequest {
+  string name = 1;
+}
+message HelloReply {
+  string message = 1;
+}
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply);
+}
